@@ -25,6 +25,10 @@ public class DoctorDaoImpl implements DoctorDao {
 
     @Override
     public Doctor updateDoctor(Doctor doctor) {
+
+        Doctor currDoc = doctorRepo.findById(doctor.getId()).get();
+        currDoc.setAvailability(doctor.getAvailability());
+        currDoc.setAppointmentList(doctor.getAppointmentList());
         return doctorRepo.save(doctor);
     }
 

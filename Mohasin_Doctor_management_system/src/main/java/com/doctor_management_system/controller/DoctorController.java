@@ -3,11 +3,12 @@ package com.doctor_management_system.controller;
 import com.doctor_management_system.entity.Doctor;
 import com.doctor_management_system.service.DoctorDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/doctor")
 public class DoctorController
 {
@@ -15,6 +16,19 @@ public class DoctorController
     @Autowired
     public DoctorController(DoctorDao doctorDao){
         this.doctorDao=doctorDao;
+    }
+
+
+    @GetMapping("doctorLogin")
+    public String doc(){
+
+        return "views/doctorLogin";
+    }
+
+    @GetMapping("doctorRegistration")
+    public String doctorRegister(){
+
+        return "views/doctorRegistration";
     }
 
     @GetMapping("/doctor-id/{doctorId}")
@@ -35,6 +49,7 @@ public class DoctorController
     }
     @PutMapping("/update")
     public Doctor updateDoctor(@RequestBody Doctor doctor){
+
         return doctorDao.updateDoctor(doctor);
     }
     @DeleteMapping("/remove/{doctorId}")

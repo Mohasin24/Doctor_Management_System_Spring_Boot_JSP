@@ -42,11 +42,6 @@ public class Appointment {
     public long getId() {
         return id;
     }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
     public Doctor getDoctor() {
         return doctor;
     }

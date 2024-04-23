@@ -18,6 +18,19 @@ public class PatientController
         this.patientDao=patientDao;
     }
 
+    @GetMapping("patientLogin")
+    public String patientLogin(){
+
+        return "views/patientLogin";
+    }
+
+    @GetMapping("patientRegistration")
+    public String patientRegistration(){
+
+        return "views/patientRegistration";
+    }
+
+
     @GetMapping("/patient-id/{patientId}")
     public Patient getPatientById(@PathVariable long patientId){
         return patientDao.getPatientById(patientId);

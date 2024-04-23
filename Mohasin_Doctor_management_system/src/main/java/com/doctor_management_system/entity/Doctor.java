@@ -29,8 +29,13 @@ public class Doctor {
     @Column(name = "mobile_no")
     private String mobileNo;
 
+    @Column(name = "password")
+    private String password;
+
     @OneToMany(mappedBy = "doctor")
     private List<Appointment> appointmentList;
+
+
     public Doctor() {
     }
 
@@ -44,10 +49,6 @@ public class Doctor {
 
     public long getId() {
         return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -96,6 +97,14 @@ public class Doctor {
 
     public void setAppointmentList(List<Appointment> appointmentList) {
         this.appointmentList = appointmentList;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
