@@ -38,6 +38,11 @@ public class PatientDaoImpl implements PatientDao {
     }
 
     @Override
+    public Patient getPatientByEmail(String email) {
+        return patientRepo.findByEmail(email);
+    }
+
+    @Override
     public List<Patient> getAllPatient() {
         return patientRepo.findAll();
     }

@@ -43,6 +43,11 @@ public class DoctorDaoImpl implements DoctorDao {
     }
 
     @Override
+    public Doctor getDoctorByEmail(String email) {
+        return doctorRepo.findByEmail(email);
+    }
+
+    @Override
     public List<Doctor> getAllDoctors() {
         return doctorRepo.findAll();
     }

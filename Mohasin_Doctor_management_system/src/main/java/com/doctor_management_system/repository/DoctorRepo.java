@@ -7,4 +7,7 @@ public interface DoctorRepo extends JpaRepository<Doctor, Long> {
 
     //custom implementation
     Doctor findBySpecialization(String specialization);
+
+    //    find the doctor by email address
+    public Doctor findByEmail(String email);
 }

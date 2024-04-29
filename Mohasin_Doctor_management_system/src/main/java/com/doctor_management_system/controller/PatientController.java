@@ -2,10 +2,15 @@ package com.doctor_management_system.controller;
 
 import com.doctor_management_system.entity.Patient;
 import com.doctor_management_system.service.PatientDao;
+import com.doctor_management_system.utility.LoginDetails;
 import com.doctor_management_system.utility.PatientRegistration;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
+import jakarta.websocket.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.ArrayList;
@@ -28,9 +33,28 @@ public class PatientController
     }
 
     @PostMapping("/validate-patientLogin")
-    public RedirectView validatePatientLogin()
+    public ModelAndView validatePatientLogin(@ModelAttribute LoginDetails loginDetails, HttpServletRequest request)
     {
-        return new RedirectView("patientHome");
+        ModelAndView mv = new ModelAndView();
+
+        Patient patient = patientDao.getPatientByEmail(loginDetails.email());
+
+        if(patient != null && patient.getPassword().equals(loginDetails.password())){
+            HttpSession session = request.getSession();
+            session.setAttribute("patient",patient);
+            session.setAttribute("patientName",patient.getName());
+
+            mv.addObject("status","Patient Successfully logged in.");
+            mv.setViewName("redirect:/patientHome");
+
+        } else if(patient != null && !patient.getPassword().equals(loginDetails.password())){
+            mv.addObject("status","Incorrect Password");
+            mv.setViewName("redirect:/patientLogin");
+        } else{
+            mv.addObject("status","Patient not registered");
+            mv.setViewName("redirect:patientRegistration");
+        }
+        return mv;
     }
 
 
@@ -57,7 +81,10 @@ public class PatientController
         return "redirect:patientLogin";
     }
 
-
+    @GetMapping("/patientHome")
+    public String patientHome(){
+        return "patientHome";
+    }
 //###########################################################################################
 //                                   Rest Api's
 //###########################################################################################

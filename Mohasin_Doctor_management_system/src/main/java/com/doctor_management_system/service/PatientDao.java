@@ -10,5 +10,6 @@ public interface PatientDao
     Patient updatePatient(Patient patient);
     void deletePatientById(long id);
     Patient getPatientById(long id);
+    Patient getPatientByEmail(String email);
     List<Patient> getAllPatient();
 }

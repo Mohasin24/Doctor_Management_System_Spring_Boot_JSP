@@ -106,7 +106,7 @@ public class Patient {
                 ", email='" + email + '\'' +
                 ", mobileNo='" + mobileNo + '\'' +
                 ", password='" + password + '\'' +
-                ", appointmentList=" + appointmentList +
+
                 '}';
     }
 }
