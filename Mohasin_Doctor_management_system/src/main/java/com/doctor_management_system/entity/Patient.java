@@ -25,17 +25,21 @@ public class Patient {
     @Column(name = "mobile_no")
     private String mobileNo;
 
+    @Column(name = "password")
+    private String password;
+
     @OneToMany(mappedBy = "patient")
     private List<Appointment> appointmentList;
 
     public Patient() {
     }
 
-    public Patient(String name, String gender, String email, String mobileNo) {
+    public Patient(String name, String gender, String email, String mobileNo, String password) {
         this.name = name;
         this.gender = gender;
         this.email = email;
         this.mobileNo = mobileNo;
+        this.password = password;
     }
 
     public long getId() {
@@ -79,5 +83,30 @@ public class Patient {
 
     public void setAppointmentList(List<Appointment> appointmentList) {
         this.appointmentList = appointmentList;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "Patient{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", gender='" + gender + '\'' +
+                ", email='" + email + '\'' +
+                ", mobileNo='" + mobileNo + '\'' +
+                ", password='" + password + '\'' +
+                ", appointmentList=" + appointmentList +
+                '}';
     }
 }

@@ -17,9 +17,8 @@ public class MainController
     }
     @RequestMapping(path = {"/", "/home"})
     public String test(){
+        return "home";
 
-
-        return "views/home";
     }
 
 

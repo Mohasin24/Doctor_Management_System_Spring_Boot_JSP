@@ -42,7 +42,7 @@
         <%-- Add the doctor specialization here --%>
           <ul class="dropdown-menu pe-2">
             <% for(Doctor doc : doctorList) { 
-              System.out.println(doc.getSpecialization());
+              
             %>
 
             <li><a class="dropdown-item"><%= doc.getSpecialization() %></a></li>
@@ -85,8 +85,8 @@
         <h5 class="modal-title" id="doctorModalLabel">Doctor</h5>
       </div>
       <div class="modal-body d-flex flex-row justify-content-evenly align-items-center">
-        <a href="/doctor/doctorLogin" class="btn btn-primary btn-lg">Login</a>
-        <a href="/doctor/doctorRegistration" class="btn btn-primary btn-lg">Register</a>
+        <a href="/doctorLogin" class="btn btn-primary btn-lg">Login</a>
+        <a href="/doctorRegistration" class="btn btn-primary btn-lg">Register</a>
       </div>
     </div>
   </div>
@@ -103,8 +103,8 @@
         <h5 class="modal-title" id="doctorModalLabel">Patient</h5>
       </div>
       <div class="modal-body d-flex flex-row justify-content-evenly align-items-center">
-        <a href="/patient/patientLogin" class="btn btn-primary btn-lg">Login</a>
-        <a href="/patient/patientRegistration" class="btn btn-primary btn-lg">Register</a>
+        <a href="/patientLogin" class="btn btn-primary btn-lg">Login</a>
+        <a href="/patientRegistration" class="btn btn-primary btn-lg">Register</a>
       </div>
     </div>
   </div>

@@ -39,6 +39,8 @@ public class Doctor {
     public Doctor() {
     }
 
+    public Doctor(Record doctor){}
+
     public Doctor(String name, String specialization, String availability, String email, String mobileNo) {
         this.name = name;
         this.specialization = specialization;

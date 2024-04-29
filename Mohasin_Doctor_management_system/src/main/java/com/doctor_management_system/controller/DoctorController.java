@@ -2,14 +2,15 @@ package com.doctor_management_system.controller;
 
 import com.doctor_management_system.entity.Doctor;
 import com.doctor_management_system.service.DoctorDao;
+import com.doctor_management_system.utility.DoctorRegistration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-@RequestMapping("/doctor")
 public class DoctorController
 {
     private DoctorDao doctorDao;
@@ -19,17 +20,56 @@ public class DoctorController
     }
 
 
-    @GetMapping("doctorLogin")
+    @GetMapping("/doctorLogin")
     public String doc(){
-
-        return "views/doctorLogin";
+        return "doctorLogin";
     }
 
-    @GetMapping("doctorRegistration")
+    @PostMapping("/validate-doctorLogin")
+    public String validateDoctorLogin(){
+        return "redirect:doctorHome";
+    }
+
+    @GetMapping("/doctorRegistration")
     public String doctorRegister(){
-
-        return "views/doctorRegistration";
+        return "doctorRegistration";
     }
+
+    @PostMapping("/validate-doctorRegistration")
+    public String validateDoctorRegistration(@ModelAttribute DoctorRegistration doctorRegistration){
+
+        Doctor doctor = new Doctor();
+        doctor.setName(doctorRegistration.doctorName());
+        doctor.setEmail(doctorRegistration.doctorEmail());
+        doctor.setMobileNo(doctorRegistration.doctorMobile());
+        doctor.setSpecialization(doctorRegistration.doctorSpecialty());
+        doctor.setAvailability(doctorRegistration.doctorAvailability());
+        doctor.setAppointmentList(new ArrayList<>());
+        doctor.setPassword(doctorRegistration.doctorPassword());
+
+        doctorDao.addDoctor(doctor);
+
+        return "redirect:doctorLogin";
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//######################################################################
+
+
+
 
     @GetMapping("/doctor-id/{doctorId}")
     public Doctor getDoctorById(@PathVariable long doctorId){
@@ -39,15 +79,15 @@ public class DoctorController
     public Doctor getDoctorBySpecialization(@PathVariable String specialization){
         return doctorDao.getDoctorBySpecialization(specialization);
     }
-    @GetMapping("/all")
+    @GetMapping("/all-doctor")
     public List<Doctor> getAllDoctors(){
         return doctorDao.getAllDoctors();
     }
-    @PostMapping("/add")
+    @PostMapping("/-doctor")
     public Doctor addDoctor(@RequestBody Doctor doctor){
         return doctorDao.addDoctor(doctor);
     }
-    @PutMapping("/update")
+    @PutMapping("/update-doctor")
     public Doctor updateDoctor(@RequestBody Doctor doctor){
 
         return doctorDao.updateDoctor(doctor);
