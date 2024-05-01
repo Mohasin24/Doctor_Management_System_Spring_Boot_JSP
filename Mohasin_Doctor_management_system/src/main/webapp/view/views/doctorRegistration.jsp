@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+    
 <html>
 <head>
     <title>Doctor Registration</title>
@@ -8,6 +11,8 @@
 
 </head>
 <body>
+   <jsp:include page="../common/message.jsp"></jsp:include>
+
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-6">

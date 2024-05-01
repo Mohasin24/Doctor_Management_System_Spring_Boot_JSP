@@ -1,10 +1,20 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> --%>
+
 <html>
 <head>
     <title>Patient Login</title>
+    <jsp:include page="../common/common.jsp" />
     <%-- Common content from the home page --%>
     <jsp:include page="../common/commonHome.jsp" />
 </head>
 <body>
+
+
+
+   <jsp:include page="../common/message.jsp"></jsp:include>
+
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-6">

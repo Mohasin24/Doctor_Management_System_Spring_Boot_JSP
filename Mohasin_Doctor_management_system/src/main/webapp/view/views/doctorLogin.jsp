@@ -1,10 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+
 <html>
 <head>
     <title>Doctor Login</title>
     <%-- Common content from the home page --%>
     <jsp:include page="../common/commonHome.jsp" />
 </head>
-<body>
+<body>	
+	
+
+	<jsp:include page="../common/message.jsp"></jsp:include>
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-6">

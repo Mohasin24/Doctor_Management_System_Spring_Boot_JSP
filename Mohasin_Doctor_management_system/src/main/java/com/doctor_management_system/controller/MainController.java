@@ -1,10 +1,12 @@
 package com.doctor_management_system.controller;
 
 import com.doctor_management_system.service.DoctorDao;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 
@@ -16,12 +18,37 @@ public class MainController
         this.doctorDao=doctorDao;
     }
     @RequestMapping(path = {"/", "/home"})
-    public String test(){
+    public String home(){
         return "home";
 
     }
 
+    @RequestMapping("/logout")
+    public ModelAndView logout(HttpSession session){
+        ModelAndView mv = new ModelAndView();
 
+        session.invalidate();
+
+        mv.addObject("status", "Logged out successfully");
+        mv.setViewName("redirect:/home");
+        return mv;
+    }
+
+    @RequestMapping("/test")
+    public ModelAndView test(Model model){
+        ModelAndView mv = new ModelAndView();
+
+        mv.addObject("name","Mohasin Khalil Patel");
+        mv.setViewName("test");
+
+        return mv;
+
+//        model.addAttribute("name","Mohasin Patel");
+//
+//        return "test";
+
+
+    }
 
 
 }

@@ -118,7 +118,6 @@ public class Doctor {
                 ", availability='" + availability + '\'' +
                 ", email='" + email + '\'' +
                 ", mobileNo='" + mobileNo + '\'' +
-                ", appointmentList=" + appointmentList +
                 '}';
     }
 }

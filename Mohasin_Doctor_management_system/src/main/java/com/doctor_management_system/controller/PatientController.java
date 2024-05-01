@@ -33,27 +33,33 @@ public class PatientController
     }
 
     @PostMapping("/validate-patientLogin")
-    public ModelAndView validatePatientLogin(@ModelAttribute LoginDetails loginDetails, HttpServletRequest request)
-    {
+    public ModelAndView validatePatientLogin(@ModelAttribute LoginDetails loginDetails, HttpServletRequest request) {
         ModelAndView mv = new ModelAndView();
 
         Patient patient = patientDao.getPatientByEmail(loginDetails.email());
 
-        if(patient != null && patient.getPassword().equals(loginDetails.password())){
-            HttpSession session = request.getSession();
-            session.setAttribute("patient",patient);
-            session.setAttribute("patientName",patient.getName());
+        HttpSession session = request.getSession();;
+        if (patient != null && patient.getPassword().equals(loginDetails.password())) {
 
-            mv.addObject("status","Patient Successfully logged in.");
-            mv.setViewName("redirect:/patientHome");
+            session.setAttribute("patient", patient);
+            session.setAttribute("patientName", patient.getName());
 
-        } else if(patient != null && !patient.getPassword().equals(loginDetails.password())){
-            mv.addObject("status","Incorrect Password");
-            mv.setViewName("redirect:/patientLogin");
-        } else{
-            mv.addObject("status","Patient not registered");
-            mv.setViewName("redirect:patientRegistration");
+            mv.addObject("status", "Patient Successfully logged in.");
+            mv.setViewName("redirect:patientHome");
+
+            System.out.println("If");
+
+        } else if (patient != null && !patient.getPassword().equals(loginDetails.password()))
+        {
+            mv.addObject("status", "Incorrect Password");
+            mv.setViewName("patientLogin");
+            System.out.println("Else If");
+        } else {
+            mv.addObject("status", "Patient not registered");
+            mv.setViewName("patientRegistration");
+            System.out.println("else");
         }
+
         return mv;
     }
 
@@ -85,6 +91,10 @@ public class PatientController
     public String patientHome(){
         return "patientHome";
     }
+
+
+
+
 //###########################################################################################
 //                                   Rest Api's
 //###########################################################################################

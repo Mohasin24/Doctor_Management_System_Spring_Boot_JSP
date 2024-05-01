@@ -3,9 +3,13 @@ package com.doctor_management_system.controller;
 import com.doctor_management_system.entity.Doctor;
 import com.doctor_management_system.service.DoctorDao;
 import com.doctor_management_system.utility.DoctorRegistration;
+import com.doctor_management_system.utility.LoginDetails;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,8 +30,29 @@ public class DoctorController
     }
 
     @PostMapping("/validate-doctorLogin")
-    public String validateDoctorLogin(){
-        return "redirect:doctorHome";
+    public ModelAndView validateDoctorLogin(@ModelAttribute LoginDetails loginDetails, HttpServletRequest request)
+    {
+        ModelAndView mv = new ModelAndView();
+
+        Doctor doctor = doctorDao.getDoctorByEmail(loginDetails.email());
+
+        if(doctor != null && doctor.getPassword().equals(loginDetails.password())){
+            HttpSession session = request.getSession();
+            session.setAttribute("doctor",doctor);
+            session.setAttribute("doctorName",doctor.getName());
+
+            mv.addObject("status","Doctor Successfully logged in.");
+            mv.setViewName("redirect:/doctorHome");
+
+        } else if(doctor != null && !doctor.getPassword().equals(loginDetails.password())){
+            mv.addObject("status","Incorrect Password");
+            mv.setViewName("redirect:/doctorLogin");
+        } else{
+            mv.addObject("status","Doctor not registered");
+            mv.setViewName("redirect:doctorRegistration");
+        }
+
+        return mv;
     }
 
     @GetMapping("/doctorRegistration")
@@ -53,7 +78,10 @@ public class DoctorController
 
     }
 
-
+    @GetMapping("/doctorHome")
+    public String patientHome(){
+        return "doctorHome";
+    }
 
 
 
