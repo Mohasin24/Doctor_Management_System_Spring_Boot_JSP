@@ -25,11 +25,13 @@ public class MainController
 
     @RequestMapping("/logout")
     public ModelAndView logout(HttpSession session){
+
         ModelAndView mv = new ModelAndView();
 
-        session.invalidate();
-
-        mv.addObject("status", "Logged out successfully");
+        if(session!=null){
+            session.setAttribute("status", "Logged out successfully");
+            session.invalidate();
+        }
         mv.setViewName("redirect:/home");
         return mv;
     }

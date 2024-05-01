@@ -4,14 +4,15 @@
 <html>
 <head>
     <title>Doctor Registration</title>
+    <!-- All CDN's -->
+          <jsp:include page="../common/common.jsp" />
     <%-- Common content from the home page --%>
     <jsp:include page="../common/commonHome.jsp" />
 
-    
-
 </head>
 <body>
-   <jsp:include page="../common/message.jsp"></jsp:include>
+   <!-- dynamic message -->
+     	<jsp:include page="../common/message.jsp"></jsp:include>  
 
     <div class="container mt-5">
         <div class="row justify-content-center">

@@ -4,9 +4,13 @@
 <html>
      <head>
           <title>Doctor Home</title>
+          <!-- All CDN's -->
+          <jsp:include page="../common/common.jsp" />
      </head>
 
      <body>
+     		<!-- dynamic message -->
+     	<jsp:include page="../common/message.jsp"></jsp:include>  
           <h1>Doctor Home</h1>
      </body>
 

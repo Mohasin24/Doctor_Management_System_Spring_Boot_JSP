@@ -35,20 +35,20 @@ public class DoctorController
         ModelAndView mv = new ModelAndView();
 
         Doctor doctor = doctorDao.getDoctorByEmail(loginDetails.email());
+        HttpSession session = request.getSession();
 
         if(doctor != null && doctor.getPassword().equals(loginDetails.password())){
-            HttpSession session = request.getSession();
-            session.setAttribute("doctor",doctor);
-            session.setAttribute("doctorName",doctor.getName());
 
-            mv.addObject("status","Doctor Successfully logged in.");
-            mv.setViewName("redirect:/doctorHome");
+            session.setAttribute("doctor",doctor);
+            session.setAttribute("status","Doctor logged in successfully");
+
+            mv.setViewName("redirect:doctorHome");
 
         } else if(doctor != null && !doctor.getPassword().equals(loginDetails.password())){
-            mv.addObject("status","Incorrect Password");
-            mv.setViewName("redirect:/doctorLogin");
+            session.setAttribute("status","Incorrect Password");
+            mv.setViewName("redirect:doctorLogin");
         } else{
-            mv.addObject("status","Doctor not registered");
+            session.setAttribute("status","Doctor not registered");
             mv.setViewName("redirect:doctorRegistration");
         }
 

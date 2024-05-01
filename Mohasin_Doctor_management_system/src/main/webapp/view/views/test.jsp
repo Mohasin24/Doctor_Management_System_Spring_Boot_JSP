@@ -3,6 +3,8 @@
 <html>
 <head>
     <title>Test Page</title>
+    <!-- All CDN's -->
+          <jsp:include page="../common/common.jsp" />
 
 </head>
 <body>

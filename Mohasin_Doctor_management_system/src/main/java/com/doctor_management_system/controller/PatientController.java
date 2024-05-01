@@ -34,6 +34,7 @@ public class PatientController
 
     @PostMapping("/validate-patientLogin")
     public ModelAndView validatePatientLogin(@ModelAttribute LoginDetails loginDetails, HttpServletRequest request) {
+
         ModelAndView mv = new ModelAndView();
 
         Patient patient = patientDao.getPatientByEmail(loginDetails.email());
@@ -42,22 +43,20 @@ public class PatientController
         if (patient != null && patient.getPassword().equals(loginDetails.password())) {
 
             session.setAttribute("patient", patient);
-            session.setAttribute("patientName", patient.getName());
+            session.setAttribute("status", "Patient logged in successfully");
 
-            mv.addObject("status", "Patient Successfully logged in.");
             mv.setViewName("redirect:patientHome");
-
-            System.out.println("If");
 
         } else if (patient != null && !patient.getPassword().equals(loginDetails.password()))
         {
-            mv.addObject("status", "Incorrect Password");
-            mv.setViewName("patientLogin");
-            System.out.println("Else If");
+            session.setAttribute("status", "Incorrect Password");
+
+            mv.setViewName("redirect:patientLogin");
+
         } else {
-            mv.addObject("status", "Patient not registered");
-            mv.setViewName("patientRegistration");
-            System.out.println("else");
+            session.setAttribute("status", "Patient not registered");
+
+            mv.setViewName("redirect:patientRegistration");
         }
 
         return mv;

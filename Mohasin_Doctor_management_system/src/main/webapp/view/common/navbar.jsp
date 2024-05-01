@@ -38,15 +38,16 @@
           <a class="nav-link active dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Specialization
           </a>
-
+		
         <%-- Add the doctor specialization here --%>
           <ul class="dropdown-menu pe-2">
-            <% for(Doctor doc : doctorList) { 
-              
+            <% for(Doctor doc : doctorList) {	 
+              out.println(doc.getSpecialization());
             %>
 
-            <li><a class="dropdown-item"><%= doc.getSpecialization() %></a></li>
-
+            <li class="dropdown-item"><%= doc.getSpecialization() %></a></li>
+			<li class="dropdown-item">aa</a></li>
+			<li class="dropdown-item">aa</a></li>
             <% 
               }
             %>

@@ -5,7 +5,8 @@
 <html>
 <head>
     <title>Patient Login</title>
-    <jsp:include page="../common/common.jsp" />
+    <!-- All CDN's -->
+          <jsp:include page="../common/common.jsp" />
     <%-- Common content from the home page --%>
     <jsp:include page="../common/commonHome.jsp" />
 </head>

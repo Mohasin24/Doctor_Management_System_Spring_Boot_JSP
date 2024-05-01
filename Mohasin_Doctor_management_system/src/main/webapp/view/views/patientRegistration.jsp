@@ -3,6 +3,8 @@
 <html>
 <head>
     <title>Patient Registration</title>
+    <!-- All CDN's -->
+          <jsp:include page="../common/common.jsp" />
     <%-- Common content from the home page --%>
     <jsp:include page="../common/commonHome.jsp" />
 </head>
