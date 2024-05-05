@@ -1,17 +1,17 @@
 package com.doctor_management_system.controller;
 
+import com.doctor_management_system.entity.Doctor;
 import com.doctor_management_system.entity.Patient;
 import com.doctor_management_system.service.PatientDao;
+import com.doctor_management_system.utility.DoctorUtility;
 import com.doctor_management_system.utility.LoginDetails;
-import com.doctor_management_system.utility.PatientRegistration;
+import com.doctor_management_system.utility.PatientUtility;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
-import jakarta.websocket.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +44,7 @@ public class PatientController
 
             session.setAttribute("patient", patient);
             session.setAttribute("status", "Patient logged in successfully");
-
+            session.setAttribute("patientFirstName",patient.getName());
             mv.setViewName("redirect:patientHome");
 
         } else if (patient != null && !patient.getPassword().equals(loginDetails.password()))
@@ -70,7 +70,7 @@ public class PatientController
     }
 
     @PostMapping("/validate-patientRegistration")
-    public String validatePatientRegistration(@ModelAttribute PatientRegistration patientRegistration){
+    public String validatePatientRegistration(@ModelAttribute PatientUtility patientRegistration){
 
         Patient patient = new Patient();
 
@@ -91,8 +91,33 @@ public class PatientController
         return "patientHome";
     }
 
+    @GetMapping("/patientProfile")
+    public String patientProfile(){
+        return "patientProfile";
+    }
 
+    @PostMapping("/patientProfileUpdate")
+    public ModelAndView patientProfileUpdate(@ModelAttribute PatientUtility patientUtility, HttpServletRequest request){
+        ModelAndView mv = new ModelAndView();
 
+        HttpSession session = request.getSession();
+
+        Patient patient = patientDao.getPatientById(patientUtility.patientId());
+
+        patient.setName(patientUtility.patientName());
+        patient.setEmail(patientUtility.patientEmail());
+        patient.setMobileNo(patientUtility.patientMobile());
+        patient.setAppointmentList(new ArrayList<>());
+        patient.setPassword(patient.getPassword());
+
+        patientDao.updatePatient(patient);
+
+        mv.setViewName("redirect:/patientProfile");
+        session.setAttribute("patient",patient);
+        session.setAttribute("patientFirstName",patient.getName());
+        session.setAttribute("status","Profile updated successfully!");
+        return mv;
+    }
 
 //###########################################################################################
 //                                   Rest Api's

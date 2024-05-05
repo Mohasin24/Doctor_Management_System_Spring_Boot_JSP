@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d534b5f8-c050-4bfd-baa3-954cca0718da" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Mohasin_Doctor_management_system/src/main/java/com/doctor_management_system/utility/DoctorUtility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mohasin_Doctor_management_system/src/main/java/com/doctor_management_system/controller/DoctorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Mohasin_Doctor_management_system/src/main/java/com/doctor_management_system/controller/DoctorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mohasin_Doctor_management_system/src/main/java/com/doctor_management_system/controller/PatientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Mohasin_Doctor_management_system/src/main/java/com/doctor_management_system/controller/PatientController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mohasin_Doctor_management_system/src/main/java/com/doctor_management_system/dao/DoctorDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Mohasin_Doctor_management_system/src/main/java/com/doctor_management_system/dao/DoctorDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mohasin_Doctor_management_system/src/main/java/com/doctor_management_system/entity/Doctor.java" beforeDir="false" afterPath="$PROJECT_DIR$/Mohasin_Doctor_management_system/src/main/java/com/doctor_management_system/entity/Doctor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mohasin_Doctor_management_system/src/main/java/com/doctor_management_system/repository/DoctorRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/Mohasin_Doctor_management_system/src/main/java/com/doctor_management_system/repository/DoctorRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mohasin_Doctor_management_system/src/main/java/com/doctor_management_system/service/DoctorDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/Mohasin_Doctor_management_system/src/main/java/com/doctor_management_system/service/DoctorDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mohasin_Doctor_management_system/src/main/java/com/doctor_management_system/utility/DoctorRegistration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mohasin_Doctor_management_system/src/main/webapp/view/common/common.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Mohasin_Doctor_management_system/src/main/webapp/view/common/common.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mohasin_Doctor_management_system/src/main/webapp/view/common/commonHome.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Mohasin_Doctor_management_system/src/main/webapp/view/common/commonHome.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mohasin_Doctor_management_system/src/main/webapp/view/common/doctorNavbar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Mohasin_Doctor_management_system/src/main/webapp/view/common/doctorNavbar.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mohasin_Doctor_management_system/src/main/webapp/view/common/message.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Mohasin_Doctor_management_system/src/main/webapp/view/common/message.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mohasin_Doctor_management_system/src/main/webapp/view/common/navbar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Mohasin_Doctor_management_system/src/main/webapp/view/common/navbar.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mohasin_Doctor_management_system/src/main/webapp/view/common/patientNavbar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Mohasin_Doctor_management_system/src/main/webapp/view/common/patientNavbar.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mohasin_Doctor_management_system/src/main/webapp/view/views/doctorHome.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Mohasin_Doctor_management_system/src/main/webapp/view/views/doctorHome.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mohasin_Doctor_management_system/src/main/webapp/view/views/doctorLogin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Mohasin_Doctor_management_system/src/main/webapp/view/views/doctorLogin.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mohasin_Doctor_management_system/src/main/webapp/view/views/doctorRegistration.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Mohasin_Doctor_management_system/src/main/webapp/view/views/doctorRegistration.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mohasin_Doctor_management_system/src/main/webapp/view/views/patientHome.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Mohasin_Doctor_management_system/src/main/webapp/view/views/patientHome.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mohasin_Doctor_management_system/src/main/webapp/view/views/patientLogin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Mohasin_Doctor_management_system/src/main/webapp/view/views/patientLogin.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mohasin_Doctor_management_system/src/main/webapp/view/views/patientRegistration.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Mohasin_Doctor_management_system/src/main/webapp/view/views/patientRegistration.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mohasin_Doctor_management_system/src/main/webapp/view/views/test.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Mohasin_Doctor_management_system/src/main/webapp/view/views/test.jsp" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 7
+}]]></component>
+  <component name="ProjectId" id="2g2Zc4rdXjQZ9E3lFjqbIVtjzoH" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "ignore.virus.scanning.warn.message": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-21.0.1-openjdk-21.0.1-249ae16d76d6-a618e4d4" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d534b5f8-c050-4bfd-baa3-954cca0718da" name="Changes" comment="" />
+      <created>1714897708905</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1714897708905</updated>
+    </task>
+    <servers />
+  </component>
+</project>

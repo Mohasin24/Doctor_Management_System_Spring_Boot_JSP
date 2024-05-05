@@ -11,11 +11,23 @@
   ApplicationContext context = WebApplicationContextUtils.getWebApplicationContext(application);
   DoctorDao doctorDao = context.getBean(DoctorDao.class);
 
-  List<Doctor> doctorList = doctorDao.getAllDoctors();
-
+  Set<String> doctorList = doctorDao.getAllDoctorSpecialization();
+ 
 %>
 
-<nav class="navbar bg-primary navbar-expand-lg" data-bs-theme="dark">
+<style>
+	.d-spec{
+		cursor:grab;
+	}
+	
+	.c-link:hover{
+		font-weight:bold;
+		background-color:#3b8bf9;
+		border-radius:20px;
+	}
+</style>
+
+<nav class="navbar bg-primary navbar-expand-lg fixed-top" data-bs-theme="dark">
 
   <div class="container-fluid">
 
@@ -23,32 +35,31 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <a class="navbar-brand me-auto" href="#">LOGO</a>
+    <a class="c-link fs-2 navbar-brand me-auto p-2" href="/home">DocX</a>
 
     <div class="collapse navbar-collapse fs-5" id="navbarSupportedContent">
 
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
         <li class="nav-item pe-2">
-          <a class="nav-link active" aria-current="page" href="/home">Home</a>
+          <a class="c-link nav-link active" aria-current="page" href="/home">Home</a>
         </li>
 
         <li class="nav-item dropdown pe-2">
 
-          <a class="nav-link active dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="c-link nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Specialization
           </a>
 		
         <%-- Add the doctor specialization here --%>
-          <ul class="dropdown-menu pe-2">
-            <% for(Doctor doc : doctorList) {	 
-              out.println(doc.getSpecialization());
+          <ul class="dropdown-menu pe-2 bg-primary">
+            <% 
+            	for(String specialization : doctorList) {	 
             %>
 
-            <li class="dropdown-item"><%= doc.getSpecialization() %></a></li>
-			<li class="dropdown-item">aa</a></li>
-			<li class="dropdown-item">aa</a></li>
-            <% 
+            <li class="d-spec dropdown-item"><%=specialization %></li>
+	         
+	        <% 
               }
             %>
           </ul>
@@ -57,17 +68,17 @@
 
         <%-- Doctor Modal --%>
         <li class="nav-item pe-2">
-          <a class="nav-link active" href="#" data-toggle="modal" data-target="#doctorModal">Doctor</a>
+          <a class="c-link nav-link active" href="#" data-toggle="modal" data-target="#doctorModal">Doctor</a>
         </li>
 
         <%-- Add the modal for patient login and registration here --%>
         <li class="nav-item pe-2">
-          <a class="nav-link active" href="#" data-toggle="modal" data-target="#patientModal">Patient</a>
+          <a class="c-link nav-link active" href="#" data-toggle="modal" data-target="#patientModal">Patient</a>
         </li>
 
         <%-- Add the about page or help page with the app detail --%>
         <li class="nav-item pe-2">
-          <a class="nav-link active" href="#" data-toggle="modal" data-target="#helpModal">Help</a>
+          <a class="c-link nav-link active" href="#" data-toggle="modal" data-target="#helpModal">Help</a>
         </li>
 
       </ul>

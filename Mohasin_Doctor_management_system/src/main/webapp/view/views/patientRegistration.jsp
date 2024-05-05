@@ -9,8 +9,13 @@
     <jsp:include page="../common/commonHome.jsp" />
 </head>
 <body>
-    <jsp:include page="../common/message.jsp"></jsp:include>
-    <div class="container mt-5">
+    <div class="outer">
+		<div class="inner">
+			<!-- Dynamic Message -->
+			<jsp:include page="../common/message.jsp"></jsp:include>
+		</div>
+	</div>
+    <div class="container main">
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card">

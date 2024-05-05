@@ -1,15 +1,31 @@
 <html>
-
+<head>
+	<!-- All CDN's -->
+          <jsp:include page="../common/common.jsp" />
+          
+          <style type="text/css">
+          .outer{
+          		position:relative;
+          		
+          	}
+          	
+          	.inner{
+          		position:absolute;
+          		width:100%;
+          		top:-80px;
+          	}
+          </style>
+</head>
 <body>
 	<%
 	String status = (String) session.getAttribute("status");
 
-	if (status != null) {
+	if (status!=null) {
 	%>
 
 
 	<div
-		class="alert alert-success alert-dismissible fade show text-center"
+		class="w-75 m-auto alert alert-success alert-dismissible fade show text-center border border-success shadow shadow-lg"
 		role="alert">
 
 		<p>

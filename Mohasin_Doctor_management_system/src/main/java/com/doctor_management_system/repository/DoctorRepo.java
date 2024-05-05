@@ -2,6 +2,9 @@ package com.doctor_management_system.repository;
 
 import com.doctor_management_system.entity.Doctor;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import java.util.Set;
 
 public interface DoctorRepo extends JpaRepository<Doctor, Long> {
 
@@ -9,5 +12,8 @@ public interface DoctorRepo extends JpaRepository<Doctor, Long> {
     Doctor findBySpecialization(String specialization);
 
     //    find the doctor by email address
-    public Doctor findByEmail(String email);
+    Doctor findByEmail(String email);
+
+    @Query("Select distinct specialization from Doctor")
+    Set<String> findAllSpecialization();
 }

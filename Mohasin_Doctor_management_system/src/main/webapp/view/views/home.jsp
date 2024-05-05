@@ -11,7 +11,7 @@
      <body>
      	<!-- dynamic message -->
      	<jsp:include page="../common/message.jsp"></jsp:include>     
-          <div class="inner d-flex flex-row justify-content-center align-items-center">
+          <div class="h-100 d-flex flex-row justify-content-center align-items-center">
                <h1 class="bg-primary-subtle text-success p-4 rounded">Welcome to doctor management system</h1>
           </div>
 

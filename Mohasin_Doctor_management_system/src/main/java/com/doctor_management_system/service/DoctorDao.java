@@ -4,6 +4,7 @@ import com.doctor_management_system.entity.Doctor;
 import com.doctor_management_system.entity.Patient;
 
 import java.util.List;
+import java.util.Set;
 
 public interface DoctorDao
 {
@@ -14,4 +15,6 @@ public interface DoctorDao
     Doctor getDoctorByEmail(String email);
     List<Doctor> getAllDoctors();
     Doctor getDoctorBySpecialization(String specialization);
+
+    Set<String> getAllDoctorSpecialization();
 }

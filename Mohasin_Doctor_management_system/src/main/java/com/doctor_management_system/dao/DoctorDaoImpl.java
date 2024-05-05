@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class DoctorDaoImpl implements DoctorDao {
@@ -55,5 +56,10 @@ public class DoctorDaoImpl implements DoctorDao {
     @Override
     public Doctor getDoctorBySpecialization(String specialization) {
         return doctorRepo.findBySpecialization(specialization);
+    }
+
+    @Override
+    public Set<String> getAllDoctorSpecialization() {
+        return doctorRepo.findAllSpecialization();
     }
 }

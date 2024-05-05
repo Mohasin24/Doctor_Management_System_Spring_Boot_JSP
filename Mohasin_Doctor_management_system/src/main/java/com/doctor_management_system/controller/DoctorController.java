@@ -2,7 +2,7 @@ package com.doctor_management_system.controller;
 
 import com.doctor_management_system.entity.Doctor;
 import com.doctor_management_system.service.DoctorDao;
-import com.doctor_management_system.utility.DoctorRegistration;
+import com.doctor_management_system.utility.DoctorUtility;
 import com.doctor_management_system.utility.LoginDetails;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -41,7 +41,7 @@ public class DoctorController
 
             session.setAttribute("doctor",doctor);
             session.setAttribute("status","Doctor logged in successfully");
-
+            session.setAttribute("doctorFirstName",doctor.getName());
             mv.setViewName("redirect:doctorHome");
 
         } else if(doctor != null && !doctor.getPassword().equals(loginDetails.password())){
@@ -60,17 +60,17 @@ public class DoctorController
         return "doctorRegistration";
     }
 
-    @PostMapping("/validate-doctorRegistration")
-    public String validateDoctorRegistration(@ModelAttribute DoctorRegistration doctorRegistration){
+    @PostMapping("/validate-doctorUtility")
+    public String validateDoctorRegistration(@ModelAttribute DoctorUtility doctorUtility){
 
         Doctor doctor = new Doctor();
-        doctor.setName(doctorRegistration.doctorName());
-        doctor.setEmail(doctorRegistration.doctorEmail());
-        doctor.setMobileNo(doctorRegistration.doctorMobile());
-        doctor.setSpecialization(doctorRegistration.doctorSpecialty());
-        doctor.setAvailability(doctorRegistration.doctorAvailability());
+        doctor.setName(doctorUtility.doctorName());
+        doctor.setEmail(doctorUtility.doctorEmail());
+        doctor.setMobileNo(doctorUtility.doctorMobile());
+        doctor.setSpecialization(doctorUtility.doctorSpecialty());
+        doctor.setAvailability(doctorUtility.doctorAvailability());
         doctor.setAppointmentList(new ArrayList<>());
-        doctor.setPassword(doctorRegistration.doctorPassword());
+        doctor.setPassword(doctorUtility.doctorPassword());
 
         doctorDao.addDoctor(doctor);
 
@@ -83,9 +83,35 @@ public class DoctorController
         return "doctorHome";
     }
 
+    @GetMapping("/doctorProfile")
+    public String doctorProfile(){
+        return "doctorProfile";
+    }
 
+    @PostMapping("/doctorProfileUpdate")
+    public ModelAndView doctorProfileUpdate(@ModelAttribute DoctorUtility doctorUtility, HttpServletRequest request){
+        ModelAndView mv = new ModelAndView();
 
+        HttpSession session = request.getSession();
 
+        Doctor doctor = doctorDao.getDoctorById(doctorUtility.doctorId());
+
+        doctor.setName(doctorUtility.doctorName());
+        doctor.setEmail(doctorUtility.doctorEmail());
+        doctor.setMobileNo(doctorUtility.doctorMobile());
+        doctor.setSpecialization(doctorUtility.doctorSpecialty());
+        doctor.setAvailability(doctorUtility.doctorAvailability());
+        doctor.setAppointmentList(new ArrayList<>());
+        doctor.setPassword(doctor.getPassword());
+
+        doctorDao.updateDoctor(doctor);
+
+        mv.setViewName("redirect:/doctorProfile");
+        session.setAttribute("doctor",doctor);
+        session.setAttribute("doctorFirstName",doctor.getName());
+        session.setAttribute("status","Profile updated successfully!");
+        return mv;
+    }
 
 
 

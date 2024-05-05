@@ -9,14 +9,20 @@
           <jsp:include page="../common/common.jsp" />
     <%-- Common content from the home page --%>
     <jsp:include page="../common/commonHome.jsp" />
+    
+
 </head>
 <body>
 
 
 
-   <jsp:include page="../common/message.jsp"></jsp:include>
+   <div class="outer">
+		<div class="inner">
+			<jsp:include page="../common/message.jsp"></jsp:include>
+		</div>
+	</div>
 
-    <div class="container mt-5">
+    <div class="container-fluid main">
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card">
