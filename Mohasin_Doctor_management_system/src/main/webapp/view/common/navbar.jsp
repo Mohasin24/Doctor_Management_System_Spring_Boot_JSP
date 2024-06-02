@@ -57,7 +57,11 @@
             	for(String specialization : doctorList) {	 
             %>
 
-            <li class="d-spec dropdown-item"><%=specialization %></li>
+            <li class="d-spec dropdown-item">
+              <%=specialization 
+              
+              %>
+            </li>
 	         
 	        <% 
               }

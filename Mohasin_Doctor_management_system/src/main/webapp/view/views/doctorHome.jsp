@@ -18,7 +18,7 @@
 	</div>
 	
 	<div class="h-75 d-flex flex-row justify-content-center align-items-center">
-               <h1 class="bg-primary-subtle text-success p-4 rounded">Dr. <%=session.getAttribute("doctorFirstName") %></h1>
+               <h1 class="bg-primary-subtle text-success p-4 rounded">Welcome Dr. <%=session.getAttribute("doctorFirstName") %></h1>
           </div>
 
 </body>
