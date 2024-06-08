@@ -21,14 +21,14 @@
 
 	<%
 	Patient patient = (Patient) session.getAttribute("patient");
-	out.println(patient);
 
 	ApplicationContext context = WebApplicationContextUtils.getWebApplicationContext(application);
 	DoctorDao doctorDao = context.getBean(DoctorDao.class);
 
 	List<Doctor> list = doctorDao.getAllDoctors();
 	Set<String> specializationList = doctorDao.getAllDoctorSpecialization();
-	out.print(specializationList);
+
+	String[] genderOptions = {"Male","Female","Other"};
 	%>
 
 	<jsp:include page="../common/patientNavbar.jsp"></jsp:include>
@@ -50,59 +50,81 @@
 
 			<hr class="border border-primary opacity-75" />
 
-			<form class="row g-3" action="" method="post">
+<%-- ##################################################################################### 
+								Appointment Form
+##################################################################################### --%>
+			<form class="row g-3" id="appointmentForm" action="#">
 
 				<div hidden=true>
 					<label for="patientId" class="form-label">Id</label> <input
 						type="text" class="form-control" id="patientId" name="patientId"
-						value="<%=patient.getId()%>">
+						value="<%=patient.getId()%>" required>
 				</div>
 
 				<div class="col-md-12">
 					<label for="patientName" class="form-label">Name</label> <input
 						type="text" class="form-control" id="patientName"
-						name="patientName" value="<%=patient.getName()%>">
+						name="patientName" value="<%=patient.getName()%>" required>
 				</div>
 
 				<div class="col-md-6">
 					<label for="patientEmail" class="form-label">Email</label> <input
 						type="email" class="form-control" id="patientEmail"
-						name="patientEmail" value="<%=patient.getEmail()%>">
+						name="patientEmail" value="<%=patient.getEmail()%>" required>
 				</div>
 
 
 
 				<div class="col-md-6">
-					<label for="patientGender" class="form-label">Gender</label> <input
-						type="text" class="form-control" id="patientGender"
-						name="patientGender" value="<%=patient.getGender()%>">
+					<label for="patientGender" class="form-label">Gender</label>
+
+						<select id="patientGender" class="form-select">
+							<option disabled>Choose...</option>
+							
+							<%
+								for(String gen : genderOptions)
+								{
+									if(gen.equals(patient.getGender())){
+
+									
+							%>
+
+								<option selected><%=gen%></option>
+							<%	
+							}else
+							{
+							%>
+								<option><%=gen%></option>		
+								<%
+							}								
+								}
+							%>	
+
+						</select>
 				</div>
 
 
 				<div class="col-md-6">
 					<label for="patientMobile" class="form-label">Mobile No.</label> <input
 						type="text" class="form-control" id="patientMobile"
-						name="patientMobile" value="<%=patient.getMobileNo()%>">
+						name="patientMobile" value="<%=patient.getMobileNo()%>" required>
 				</div>
 
 				<div class="col-md-6">
 					<label for="patientMobile" class="form-label">Appointment
 						Date</label> <input type="date" class="form-control" id="appointmentDate"
-						name="appointmentDate">
+						name="appointmentDate" required>
 				</div>
 
 				<div class="col-md-6">
-					<label for="patientMobile" class="form-label">Select Doctor
-						Specialization</label> 
-						<select id="doctorSpecialization"
-						class="form-select">
-						<option selected>Choose...</option>
+					<label for="patientMobile" class="form-label">Select Doctor</label>
+					<select id="doctorSpecialization" class="form-select">
+						<option selected disabled>Choose...</option>
 						<%
 						for (Doctor doctor : list) {
 						%>
-						<option value="<%=doctor.getId()%>">
-							<%=doctor.getName() %>
-							||
+						<option value="<%=doctor.getId()%>" data-avalability="<%=doctor.getAvailability()%>" required>
+							<%=doctor.getName()%> ||
 							<%=doctor.getSpecialization()%>
 						</option>
 						<%
@@ -111,14 +133,51 @@
 					</select>
 				</div>
 
-				
+
+				<div id="doctorAvalability" class="col-md-6" style="display: none">
+					<label for="doctorAvalabilityText" class="form-label">Doctor
+						Availability</label> 
+						<input type="text" id="doctorAvalabilityText" class="form-control" disabled required>
+				</div>
 
 				<div class="d-flex justify-content-evenly">
-					<button id="editBtn" type="button" class="btn col-4 btn-primary">Add
+					<button id="editBtn" type="submit" class="btn col-4 btn-primary">Add
 						Appointment</button>
 				</div>
 			</form>
+			
+<%-- ##################################################################################### 
+								Appointment Form End
+##################################################################################### --%>
 		</div>
 	</div>
+
+
+	<script type="text/javascript">
+
+		const appointmentForm = document.getElementById("appointmentForm")
+		const doctorSpecialization = document.getElementById("doctorSpecialization")
+		const doctorAvalability = document.getElementById("doctorAvalability")
+		const doctorAvalabilityText = document.getElementById("doctorAvalabilityText")
+
+		let index=0;
+
+		doctorSpecialization.addEventListener('change',()=>{
+			index = doctorSpecialization.options.selectedIndex
+			let availability = doctorSpecialization.options[index].dataset.avalability
+				doctorAvalabilityText.value = availability
+				doctorAvalability.style.display="block"
+		})
+
+		appointmentForm.addEventListener('submit', (event)=>{
+
+			if(index===0){
+				event.preventDefault();
+				alert("Please select the doctor!")
+			}
+		})
+		
+	</script>
 </body>
 </html>
+
