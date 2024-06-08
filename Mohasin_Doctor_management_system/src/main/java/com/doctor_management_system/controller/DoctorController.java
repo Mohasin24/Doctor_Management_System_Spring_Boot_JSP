@@ -60,7 +60,7 @@ public class DoctorController
         return "doctorRegistration";
     }
 
-    @PostMapping("/validate-doctorUtility")
+    @PostMapping("/validate-doctorRegistration")
     public String validateDoctorRegistration(@ModelAttribute DoctorUtility doctorUtility){
 
         Doctor doctor = new Doctor();

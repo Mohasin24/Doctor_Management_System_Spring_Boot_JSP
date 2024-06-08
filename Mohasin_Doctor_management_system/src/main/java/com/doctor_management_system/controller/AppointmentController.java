@@ -3,12 +3,14 @@ package com.doctor_management_system.controller;
 import com.doctor_management_system.entity.Appointment;
 import com.doctor_management_system.service.AppointmentDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
-@RequestMapping("/appointment")
+//@RestController
+//@RequestMapping("/appointment")
+@Controller
 public class AppointmentController
 {
     private AppointmentDao appointmentDao;
@@ -17,6 +19,24 @@ public class AppointmentController
         this.appointmentDao=appointmentDao;
     }
 
+    @GetMapping("/addAppointmentFormPatient")
+    public String addAppointmentPatient(){
+        return "addAppointmentFormPatient";
+    }
+
+    @GetMapping("/viewAppointmentPatient")
+    public String viewAppointmentPatient(){
+        System.out.println("viewAppointmentPatient");
+        return "viewAppointmentPatient";
+    }
+
+
+
+
+
+    //###########################################################################################
+//                                   Rest Api's
+//###########################################################################################
     @GetMapping("/all-appointments")
     public List<Appointment> getAllAppointments(){
         return appointmentDao.getAllAppointments();

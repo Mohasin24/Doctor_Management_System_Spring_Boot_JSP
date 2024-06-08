@@ -15,7 +15,7 @@
 		<div class="inner">
 			<!-- Dynamic Message -->
 			<jsp:include page="../common/message.jsp"></jsp:include>
-		</div>
+			</div>
 	</div>
 
 	<div class="container main">
@@ -80,8 +80,13 @@
         const doctorPassword = document.getElementById("doctorPassword")
         const confirmDoctorPassword = document.getElementById("confirmDoctorPassword")
         const passwordMessage = document.getElementById("passwordMessage")
-        
+      
         const submitForm = (event) => {
+
+		if(!document.getElementById("registrationForm").checkValidity()){
+			alert("Please fill all the fields!")
+			return false;
+		}
             
         if (doctorPassword.value !== confirmDoctorPassword.value) {
 

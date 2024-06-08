@@ -47,9 +47,9 @@
 					<li class="nav-item pe-3"><a class="c-link nav-link active"
 						aria-current="page" href="/patientHome">Home</a></li>
 					<li class="nav-item pe-3"><a class="c-link nav-link active"
-						aria-current="page" href="#">Add Appointment</a></li>
+						aria-current="page" href="/addAppointmentFormPatient">Add Appointment</a></li>
 					<li class="nav-item pe-3"><a class="c-link nav-link active"
-						aria-current="page" href="#">View Appointment</a></li>
+						aria-current="page" href="/viewAppointmentPatient">View Appointment</a></li>
 
 					<li class="nav-item pe-3"><a class="c-link nav-link active"
 						aria-current="page" href="/patientProfile">Profile</a></li>

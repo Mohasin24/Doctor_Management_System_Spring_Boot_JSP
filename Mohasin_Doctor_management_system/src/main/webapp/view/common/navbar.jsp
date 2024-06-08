@@ -12,7 +12,7 @@
   DoctorDao doctorDao = context.getBean(DoctorDao.class);
 
   Set<String> doctorList = doctorDao.getAllDoctorSpecialization();
- 
+  
 %>
 
 <style>
@@ -54,15 +54,18 @@
         <%-- Add the doctor specialization here --%>
           <ul class="dropdown-menu pe-2 bg-primary">
             <% 
-            	for(String specialization : doctorList) {	 
+            	for(String specialization : doctorList) {	
+            		out.println(specialization);
             %>
 
             <li class="d-spec dropdown-item">
-              <%=specialization 
+              <%=specialization%>
               
-              %>
             </li>
-	         
+            
+            <li><% out.println("Hello"); %></li>
+	         <li>hhh</li>
+	         <li>hhh</li>
 	        <% 
               }
             %>
